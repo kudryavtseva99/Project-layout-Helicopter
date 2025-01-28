@@ -220,6 +220,17 @@ a {
   max-width: 400px;
 }
 
+.youtube__wrapper {
+  position: relative;
+}
+
+.youtube__btn {
+  max-width: 20px;
+  position: absolute;
+  left: 90%;
+  top: 85%;
+}
+
 .photoshoot__top {
   display: flex;
   align-items: center;
@@ -874,6 +885,10 @@ label {
   }
   .youtube__link {
     display: none;
+  }
+
+  .youtube__btn {
+    top: 80%;
   }
 
   .photoshoot__wrapper-mobile {
