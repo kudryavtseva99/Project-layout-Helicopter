@@ -641,7 +641,7 @@ a {
   opacity: 1;
 }
 
-.modal__window {
+.form__window {
   max-width: 350px;
   padding: 20px 35px;
   border-radius: 3px;
@@ -651,7 +651,7 @@ a {
   transition: transform 0.8s;
 }
 
-.modal.open .modal__window {
+.modal.open .form__window {
   transform: scale(1);
 }
 
