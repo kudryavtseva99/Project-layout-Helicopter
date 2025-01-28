@@ -3,6 +3,8 @@
 // кладем элементы в переменные
 const openFormButtons: NodeListOf<HTMLButtonElement> =
   document.querySelectorAll(".date__btn");
+const bookButton: HTMLButtonElement | null =
+  document.querySelector(".welcome__button");
 const modal: HTMLDivElement | null = document.querySelector(".modal");
 const closeButton: HTMLButtonElement | null =
   document.querySelector(".modal__close-btn");
@@ -22,10 +24,14 @@ const hideForm = (): void => {
   }
 };
 
-// обработчик для кнопок показать форму(их две) и скрыть форму(крестик или клик вне формы)
+// обработчик для кнопок показать форму(их две), забронировать (кнопка) и скрыть форму(крестик или клик вне формы)
 openFormButtons.forEach((button) => {
   button.addEventListener("click", showForm);
 });
+
+if (bookButton) {
+  bookButton.addEventListener("click", showForm);
+}
 
 if (closeButton) {
   closeButton.addEventListener("click", hideForm);
