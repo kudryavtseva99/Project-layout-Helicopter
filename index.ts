@@ -48,14 +48,11 @@ window.addEventListener("click", (event: MouseEvent) => {
   }
 });
 
-// МОБИЛКА
 // плеер ютуб: элементы
-const youtubeWrapperMobile: HTMLElement | null = document.querySelector(
-  ".youtube__wrapper-mobile"
-);
-const youtubePlayerMobile: HTMLIFrameElement | null = document.querySelector(
-  ".youtube__player-mobile"
-);
+const youtubeWrapper: HTMLElement | null =
+  document.querySelector(".youtube__wrapper");
+const youtubePlayer: HTMLIFrameElement | null =
+  document.querySelector(".youtube__player");
 
 // видео с ютуба
 const videoURL: string = "fb6KMJg_k5o";
@@ -63,40 +60,16 @@ const videoURL: string = "fb6KMJg_k5o";
 // 1) скрываем картинку с кнопкой показа
 //  2) устанавливаем плеер с видео и показываем его
 const showYoutubeVideoMobile = (): void => {
-  if (youtubeWrapperMobile) {
-    youtubeWrapperMobile.style.display = "none";
+  if (youtubeWrapper) {
+    youtubeWrapper.style.display = "none";
   }
 
-  if (youtubePlayerMobile) {
-    youtubePlayerMobile.src = `https://www.youtube.com/embed/${videoURL}?autoplay=1`;
-    youtubePlayerMobile.style.display = "block";
-  }
-};
-
-if (youtubeWrapperMobile) {
-  youtubeWrapperMobile.addEventListener("click", showYoutubeVideoMobile);
-}
-
-// ДЕКСТОП
-
-const youtubeWrapperDeckstop: HTMLElement | null = document.querySelector(
-  ".youtube__wrapper-deckstop"
-);
-const youtubePlayerDeckstop: HTMLIFrameElement | null = document.querySelector(
-  ".youtube__player-deckstop"
-);
-
-const showYoutubeVideoDeckstop = (): void => {
-  if (youtubeWrapperDeckstop) {
-    youtubeWrapperDeckstop.style.display = "none";
-  }
-
-  if (youtubePlayerDeckstop) {
-    youtubePlayerDeckstop.src = `https://www.youtube.com/embed/${videoURL}?autoplay=1`;
-    youtubePlayerDeckstop.style.display = "block";
+  if (youtubePlayer) {
+    youtubePlayer.src = `https://www.youtube.com/embed/${videoURL}?autoplay=1`;
+    youtubePlayer.style.display = "block";
   }
 };
 
-if (youtubeWrapperDeckstop) {
-  youtubeWrapperDeckstop.addEventListener("click", showYoutubeVideoDeckstop);
+if (youtubeWrapper) {
+  youtubeWrapper.addEventListener("click", showYoutubeVideoMobile);
 }

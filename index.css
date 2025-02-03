@@ -213,6 +213,7 @@ a {
 }
 
 .youtube__wrapper {
+  margin-bottom: 30px;
   position: relative;
   cursor: pointer;
 }
@@ -889,14 +890,16 @@ label {
     gap: 0;
   }
 
-  .youtube__wrapper-deckstop {
-    order: -2;
-    margin-bottom: 30px;
-  }
-
   .youtube__btn {
     cursor: pointer;
     top: 80%;
+  }
+  .youtube__wrapper {
+    order: -2;
+  }
+
+  .youtube__player {
+    order: -2;
   }
 
   .photoshoot__text-add {

@@ -35,38 +35,22 @@ window.addEventListener("click", function (event) {
         hideForm();
     }
 });
-// МОБИЛКА
 // плеер ютуб: элементы
-var youtubeWrapperMobile = document.querySelector(".youtube__wrapper-mobile");
-var youtubePlayerMobile = document.querySelector(".youtube__player-mobile");
+var youtubeWrapper = document.querySelector(".youtube__wrapper");
+var youtubePlayer = document.querySelector(".youtube__player");
 // видео с ютуба
 var videoURL = "fb6KMJg_k5o";
 // 1) скрываем картинку с кнопкой показа
 //  2) устанавливаем плеер с видео и показываем его
 var showYoutubeVideoMobile = function () {
-    if (youtubeWrapperMobile) {
-        youtubeWrapperMobile.style.display = "none";
+    if (youtubeWrapper) {
+        youtubeWrapper.style.display = "none";
     }
-    if (youtubePlayerMobile) {
-        youtubePlayerMobile.src = "https://www.youtube.com/embed/".concat(videoURL, "?autoplay=1");
-        youtubePlayerMobile.style.display = "block";
-    }
-};
-if (youtubeWrapperMobile) {
-    youtubeWrapperMobile.addEventListener("click", showYoutubeVideoMobile);
-}
-// ДЕКСТОП
-var youtubeWrapperDeckstop = document.querySelector(".youtube__wrapper-deckstop");
-var youtubePlayerDeckstop = document.querySelector(".youtube__player-deckstop");
-var showYoutubeVideoDeckstop = function () {
-    if (youtubeWrapperDeckstop) {
-        youtubeWrapperDeckstop.style.display = "none";
-    }
-    if (youtubePlayerDeckstop) {
-        youtubePlayerDeckstop.src = "https://www.youtube.com/embed/".concat(videoURL, "?autoplay=1");
-        youtubePlayerDeckstop.style.display = "block";
+    if (youtubePlayer) {
+        youtubePlayer.src = "https://www.youtube.com/embed/".concat(videoURL, "?autoplay=1");
+        youtubePlayer.style.display = "block";
     }
 };
-if (youtubeWrapperDeckstop) {
-    youtubeWrapperDeckstop.addEventListener("click", showYoutubeVideoDeckstop);
+if (youtubeWrapper) {
+    youtubeWrapper.addEventListener("click", showYoutubeVideoMobile);
 }
