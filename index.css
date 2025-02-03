@@ -11,14 +11,6 @@
   display: none;
 }
 
-.photoshoot__wrapper-mobile {
-  display: none;
-}
-
-.photoshoot__svg-mobile {
-  display: none;
-}
-
 .photoshoot__gallery-mobile {
   display: none;
 }
@@ -887,10 +879,19 @@ label {
     font-size: 17px;
   }
   .photoshoot__wrapper {
-    display: none;
+    display: block;
+    margin-bottom: 50px;
   }
+
+  .photoshoot__part .container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
   .youtube__wrapper-deckstop {
-    display: none;
+    order: -2;
+    margin-bottom: 30px;
   }
 
   .youtube__btn {
@@ -898,15 +899,16 @@ label {
     top: 80%;
   }
 
-  .photoshoot__wrapper-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+  .photoshoot__text-add {
+    order: -3;
   }
+
   .photoshoot {
     font-size: 28px;
+    margin-bottom: 15px;
+    text-align: center;
   }
+
   .youtube__img {
     max-width: 100%;
     margin-bottom: 10px;
@@ -916,33 +918,25 @@ label {
     font-size: 18px;
     margin-bottom: 20px;
   }
-  .photoshoot__part .container {
-    display: block;
+
+  .photoshoot__span-wrapper {
+    gap: 25px;
   }
-  .photoshoot__svg-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 25px;
-  }
-  .svg__mobile-wrapper {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  .span__mobile {
+  .photoshoot_span {
     font-size: 15px;
     font-weight: 500;
   }
-  .mobile__lines {
-    margin-top: 15px;
+
+  .photoshoot__pics-wrapper {
+    align-items: center;
   }
+
   .photoshoot__line {
     margin-top: 0px;
   }
 
   .photoshoot__text {
-    font-size: 15px;
+    font-size: 17px;
   }
   .photoshoot__img {
     max-width: 90px;
@@ -950,12 +944,13 @@ label {
   .photoshoot__icon {
     max-width: 90px;
     margin-right: 10px;
-    margin-top: -10px;
+  }
+
+  .photoshoot__icon-top {
+    order: -3;
   }
   .photoshoot__top {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     gap: 5px;
   }
 
@@ -1077,10 +1072,6 @@ label {
   .date__btn-mobile {
     display: block;
     padding: 10px 15px;
-  }
-
-  .photoshoot__text {
-    font-size: 13px;
   }
 
   .date__price-wrapper {
