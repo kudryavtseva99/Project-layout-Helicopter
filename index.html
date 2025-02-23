@@ -839,13 +839,13 @@
           </button>
         </div>
         <h2 class="modal__booking">Бронирование</h2>
-        <form class="model__content">
+        <form class="model__content" action="/apply?/" method="post">
           <label for="date">Дата<span class="required">*</span></label>
           <input
             type="date"
             name="date"
             class="date"
-            value="2019-09-14"
+            value="0000-00-00"
             required
           />
           <br />
@@ -881,7 +881,9 @@
             type="tel"
             name="phone"
             class="phone"
-            placeholder="+7 (905) 184-81-40"
+            placeholder="+7(905) 184-81-40"
+            pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}"
+            inputmode="numeric"
             required
           />
           <br />
@@ -890,10 +892,13 @@
           </label>
           <!-- <div class="card-details"> -->
           <input
-            type="text"
+            type="tel"
             name="card-number"
             class="card__number"
-            placeholder="Номер карты"
+            placeholder="1234 5678 1234 5678"
+            inputmode="numeric"
+            pattern="\d{4}\s\d{4}\s\d{4}\s\d{4}"
+            maxlength="19"
             required
           />
           <!-- </div> -->
@@ -902,31 +907,35 @@
               type="text"
               name="expiry-date"
               class="expiry__date"
-              placeholder="Срок действия"
+              placeholder="12/2025"
+              pattern="(0[1-9]|1[0-2])\/\d{2}"
               required
             />
             <input
-              type="text"
+              type="password"
               name="cvv"
               class="cvv"
               placeholder="CVV"
+              inputmode="numeric"
+              pattern="\d{3,4}"
+              maxlength="4"
               required
             />
           </div>
+
+          <label class="checkbox__modal">
+            <input type="checkbox" name="checkbox" class="real__checkbox" />
+            <span class="custom__checkbox"></span>
+            <p class="checkbox_p">
+              Я согласен с пользовательским <br />
+              соглашением и публичной офертой
+            </p>
+          </label>
+
+          <div class="modal__button-flex">
+            <button type="submit" class="modal__btn">Забронировать</button>
+          </div>
         </form>
-
-        <label class="checkbox__modal">
-          <input type="checkbox" name="checkbox" class="real__checkbox" />
-          <span class="custom__checkbox"></span>
-          <p class="checkbox_p">
-            Я согласен с пользовательским <br />
-            соглашением и публичной офертой
-          </p>
-        </label>
-
-        <div class="modal__button-flex">
-          <button type="submit" class="modal__btn">Забронировать</button>
-        </div>
       </div>
     </div>
     <script src="index.js"></script>
