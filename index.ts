@@ -73,3 +73,81 @@ const showYoutubeVideoMobile = (): void => {
 if (youtubeWrapper) {
   youtubeWrapper.addEventListener("click", showYoutubeVideoMobile);
 }
+
+// обязательные инпуты
+
+const date: HTMLInputElement | null = document.querySelector(".date");
+const email: HTMLInputElement | null = document.querySelector(".email");
+const fisrtName: HTMLInputElement | null =
+  document.querySelector(".first__name");
+const secondName: HTMLInputElement | null =
+  document.querySelector(".last__name");
+const phoneNumber: HTMLInputElement | null = document.querySelector(".phone");
+const cardNumber: HTMLInputElement | null =
+  document.querySelector(".card__number");
+const cardExpiryDate: HTMLInputElement | null =
+  document.querySelector(".expiry__date");
+const cvv: HTMLInputElement | null = document.querySelector(".cvv");
+
+// чекбокс
+const checkbox: HTMLElement | null = document.querySelector(".real__checkbox");
+
+// сабмит
+const submitButton: HTMLButtonElement | null =
+  document.querySelector(".modal__btn");
+const formElement: HTMLFormElement | null =
+  document.querySelector(".model__content");
+// массив с инпутами
+const inputsArr: HTMLInputElement[] = [
+  date,
+  email,
+  fisrtName,
+  secondName,
+  phoneNumber,
+  cardNumber,
+  cardExpiryDate,
+  cvv,
+].filter((input): input is HTMLInputElement => input !== null);
+
+// функция для проверки "заполнены ли все инпуты и нажат ли чекбокс"
+// const checkFieldsAndCheckbox = (): void => {
+//   const allFieldsFilled = inputsArr.every((input) => input.value.trim() !== "");
+//   const isCheckboxChecked =
+//     checkbox instanceof HTMLInputElement && checkbox.checked;
+
+//   // Если есть пустые поля, показываем сообщение и блокируем кнопку
+//   if (submitButton && !allFieldsFilled && !isCheckboxChecked) {
+//     submitButton.disabled = true;
+//     inputsArr.forEach((input) => {
+//       input.reportValidity(); // Показываем встроенное сообщение браузера
+//     });
+//   }
+
+//   if (submitButton && allFieldsFilled && isCheckboxChecked) {
+//     submitButton.disabled = false;
+//   }
+// };
+
+// достаем инфу из инпутов
+function serializeForm(formNode: HTMLFormElement): FormData {
+  const data: FormData = new FormData(formNode);
+
+  data.forEach((value, name) => {
+    console.log([name, value]);
+  });
+  return data;
+}
+
+// функция для кнопки отправки формы при клике
+function handleFormSubmit(event: Event) {
+  event.preventDefault(); // прерываем самостоятельную отправку
+  if (formElement instanceof HTMLFormElement) {
+    serializeForm(formElement);
+    console.log("Отправка!");
+  }
+}
+
+// Обработчик клика по кнопке "Отправить"
+if (formElement) {
+  formElement.addEventListener("submit", handleFormSubmit);
+}

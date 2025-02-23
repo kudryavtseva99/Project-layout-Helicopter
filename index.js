@@ -54,3 +54,63 @@ var showYoutubeVideoMobile = function () {
 if (youtubeWrapper) {
     youtubeWrapper.addEventListener("click", showYoutubeVideoMobile);
 }
+// обязательные инпуты
+var date = document.querySelector(".date");
+var email = document.querySelector(".email");
+var fisrtName = document.querySelector(".first__name");
+var secondName = document.querySelector(".last__name");
+var phoneNumber = document.querySelector(".phone");
+var cardNumber = document.querySelector(".card__number");
+var cardExpiryDate = document.querySelector(".expiry__date");
+var cvv = document.querySelector(".cvv");
+// чекбокс
+var checkbox = document.querySelector(".real__checkbox");
+// сабмит
+var submitButton = document.querySelector(".modal__btn");
+var formElement = document.querySelector(".model__content");
+// массив с инпутами
+var inputsArr = [
+    date,
+    email,
+    fisrtName,
+    secondName,
+    phoneNumber,
+    cardNumber,
+    cardExpiryDate,
+    cvv,
+].filter(function (input) { return input !== null; });
+// функция для проверки "заполнены ли все инпуты и нажат ли чекбокс"
+// const checkFieldsAndCheckbox = (): void => {
+//   const allFieldsFilled = inputsArr.every((input) => input.value.trim() !== "");
+//   const isCheckboxChecked =
+//     checkbox instanceof HTMLInputElement && checkbox.checked;
+//   // Если есть пустые поля, показываем сообщение и блокируем кнопку
+//   if (submitButton && !allFieldsFilled && !isCheckboxChecked) {
+//     submitButton.disabled = true;
+//     inputsArr.forEach((input) => {
+//       input.reportValidity(); // Показываем встроенное сообщение браузера
+//     });
+//   }
+//   if (submitButton && allFieldsFilled && isCheckboxChecked) {
+//     submitButton.disabled = false;
+//   }
+// };
+// достаем инфу из инпутов
+function serializeForm(formNode) {
+    var data = new FormData(formNode);
+    data.forEach(function (value, name) {
+        console.log([name, value]);
+    });
+    return data;
+}
+function handleFormSubmit(event) {
+    event.preventDefault();
+    if (formElement instanceof HTMLFormElement) {
+        serializeForm(formElement);
+        console.log("Отправка!");
+    }
+}
+if (formElement) {
+    formElement.addEventListener("submit", handleFormSubmit);
+}
+// **Обработчик клика по кнопке "Отправить"**
