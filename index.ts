@@ -110,23 +110,23 @@ const inputsArr: HTMLInputElement[] = [
 ].filter((input): input is HTMLInputElement => input !== null);
 
 // функция для проверки "заполнены ли все инпуты и нажат ли чекбокс"
-// const checkFieldsAndCheckbox = (): void => {
-//   const allFieldsFilled = inputsArr.every((input) => input.value.trim() !== "");
-//   const isCheckboxChecked =
-//     checkbox instanceof HTMLInputElement && checkbox.checked;
+const checkInputsAndCheckbox = (event: Event): void => {
+  const formNode = event.currentTarget as HTMLFormElement;
 
-//   // Если есть пустые поля, показываем сообщение и блокируем кнопку
-//   if (submitButton && !allFieldsFilled && !isCheckboxChecked) {
-//     submitButton.disabled = true;
-//     inputsArr.forEach((input) => {
-//       input.reportValidity(); // Показываем встроенное сообщение браузера
-//     });
-//   }
+  if (formNode) {
+    const isValid = formNode.checkValidity();
+    const isActiveSubmit =
+      isValid && checkbox instanceof HTMLInputElement && checkbox.checked;
 
-//   if (submitButton && allFieldsFilled && isCheckboxChecked) {
-//     submitButton.disabled = false;
-//   }
-// };
+    if (submitButton) {
+      submitButton.disabled = !isActiveSubmit;
+    }
+  }
+};
+
+if (formElement instanceof HTMLFormElement) {
+  formElement.addEventListener("input", checkInputsAndCheckbox);
+}
 
 // достаем инфу из инпутов
 function serializeForm(formNode: HTMLFormElement): FormData {
@@ -143,7 +143,7 @@ function handleFormSubmit(event: Event) {
   event.preventDefault(); // прерываем самостоятельную отправку
   if (formElement instanceof HTMLFormElement) {
     serializeForm(formElement);
-    console.log("Отправка!");
+    alert("Отправка!");
   }
 }
 

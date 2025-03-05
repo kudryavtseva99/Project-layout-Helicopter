@@ -1,24 +1,25 @@
+"use strict";
 // открываем и закрываем форму
 // кладем элементы в переменные
-var openFormButtons = document.querySelectorAll(".date__btn");
-var bookButton = document.querySelector(".welcome__button");
-var modal = document.querySelector(".modal");
-var closeButton = document.querySelector(".modal__close-btn");
+const openFormButtons = document.querySelectorAll(".date__btn");
+const bookButton = document.querySelector(".welcome__button");
+const modal = document.querySelector(".modal");
+const closeButton = document.querySelector(".modal__close-btn");
 // функция для показа формы
-var showForm = function (event) {
+const showForm = (event) => {
     if (modal) {
         modal.classList.add("open");
         event.stopPropagation();
     }
 };
 // функция для скрытия формы
-var hideForm = function () {
+const hideForm = () => {
     if (modal) {
         modal.classList.remove("open");
     }
 };
 // обработчик для кнопок показать форму(их две), забронировать (кнопка) и скрыть форму(крестик или клик вне формы)
-openFormButtons.forEach(function (button) {
+openFormButtons.forEach((button) => {
     button.addEventListener("click", showForm);
 });
 if (bookButton) {
@@ -28,7 +29,7 @@ if (closeButton) {
     closeButton.addEventListener("click", hideForm);
 }
 // клик вне формы
-window.addEventListener("click", function (event) {
+window.addEventListener("click", (event) => {
     if (modal &&
         event.target == modal &&
         modal.classList.contains("open") /* and clicked thing !== form */) {
@@ -36,18 +37,18 @@ window.addEventListener("click", function (event) {
     }
 });
 // плеер ютуб: элементы
-var youtubeWrapper = document.querySelector(".youtube__wrapper");
-var youtubePlayer = document.querySelector(".youtube__player");
+const youtubeWrapper = document.querySelector(".youtube__wrapper");
+const youtubePlayer = document.querySelector(".youtube__player");
 // видео с ютуба
-var videoURL = "fb6KMJg_k5o";
+const videoURL = "fb6KMJg_k5o";
 // 1) скрываем картинку с кнопкой показа
 //  2) устанавливаем плеер с видео и показываем его
-var showYoutubeVideoMobile = function () {
+const showYoutubeVideoMobile = () => {
     if (youtubeWrapper) {
         youtubeWrapper.style.display = "none";
     }
     if (youtubePlayer) {
-        youtubePlayer.src = "https://www.youtube.com/embed/".concat(videoURL, "?autoplay=1");
+        youtubePlayer.src = `https://www.youtube.com/embed/${videoURL}?autoplay=1`;
         youtubePlayer.style.display = "block";
     }
 };
@@ -55,21 +56,21 @@ if (youtubeWrapper) {
     youtubeWrapper.addEventListener("click", showYoutubeVideoMobile);
 }
 // обязательные инпуты
-var date = document.querySelector(".date");
-var email = document.querySelector(".email");
-var fisrtName = document.querySelector(".first__name");
-var secondName = document.querySelector(".last__name");
-var phoneNumber = document.querySelector(".phone");
-var cardNumber = document.querySelector(".card__number");
-var cardExpiryDate = document.querySelector(".expiry__date");
-var cvv = document.querySelector(".cvv");
+const date = document.querySelector(".date");
+const email = document.querySelector(".email");
+const fisrtName = document.querySelector(".first__name");
+const secondName = document.querySelector(".last__name");
+const phoneNumber = document.querySelector(".phone");
+const cardNumber = document.querySelector(".card__number");
+const cardExpiryDate = document.querySelector(".expiry__date");
+const cvv = document.querySelector(".cvv");
 // чекбокс
-var checkbox = document.querySelector(".real__checkbox");
+const checkbox = document.querySelector(".real__checkbox");
 // сабмит
-var submitButton = document.querySelector(".modal__btn");
-var formElement = document.querySelector(".model__content");
+const submitButton = document.querySelector(".modal__btn");
+const formElement = document.querySelector(".model__content");
 // массив с инпутами
-var inputsArr = [
+const inputsArr = [
     date,
     email,
     fisrtName,
@@ -78,39 +79,38 @@ var inputsArr = [
     cardNumber,
     cardExpiryDate,
     cvv,
-].filter(function (input) { return input !== null; });
+].filter((input) => input !== null);
 // функция для проверки "заполнены ли все инпуты и нажат ли чекбокс"
-// const checkFieldsAndCheckbox = (): void => {
-//   const allFieldsFilled = inputsArr.every((input) => input.value.trim() !== "");
-//   const isCheckboxChecked =
-//     checkbox instanceof HTMLInputElement && checkbox.checked;
-//   // Если есть пустые поля, показываем сообщение и блокируем кнопку
-//   if (submitButton && !allFieldsFilled && !isCheckboxChecked) {
-//     submitButton.disabled = true;
-//     inputsArr.forEach((input) => {
-//       input.reportValidity(); // Показываем встроенное сообщение браузера
-//     });
-//   }
-//   if (submitButton && allFieldsFilled && isCheckboxChecked) {
-//     submitButton.disabled = false;
-//   }
-// };
+const checkInputsAndCheckbox = (event) => {
+    const formNode = event.currentTarget;
+    if (formNode) {
+        const isValid = formNode.checkValidity();
+        const isActiveSubmit = isValid && checkbox instanceof HTMLInputElement && checkbox.checked;
+        if (submitButton) {
+            submitButton.disabled = !isActiveSubmit;
+        }
+    }
+};
+if (formElement instanceof HTMLFormElement) {
+    formElement.addEventListener("input", checkInputsAndCheckbox);
+}
 // достаем инфу из инпутов
 function serializeForm(formNode) {
-    var data = new FormData(formNode);
-    data.forEach(function (value, name) {
+    const data = new FormData(formNode);
+    data.forEach((value, name) => {
         console.log([name, value]);
     });
     return data;
 }
+// функция для кнопки отправки формы при клике
 function handleFormSubmit(event) {
-    event.preventDefault();
+    event.preventDefault(); // прерываем самостоятельную отправку
     if (formElement instanceof HTMLFormElement) {
         serializeForm(formElement);
-        console.log("Отправка!");
+        alert("Отправка!");
     }
 }
+// Обработчик клика по кнопке "Отправить"
 if (formElement) {
     formElement.addEventListener("submit", handleFormSubmit);
 }
-// **Обработчик клика по кнопке "Отправить"**
