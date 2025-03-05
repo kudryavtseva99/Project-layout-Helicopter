@@ -994,6 +994,10 @@ label {
     display: none;
   }
 
+  .organizer__mobile {
+    display: block;
+  }
+
   .organizer__mobile-wrapper {
     display: flex;
     justify-content: center;
@@ -1013,7 +1017,7 @@ label {
   }
 
   .organizer__btn {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .organizer__pic {
@@ -1025,7 +1029,7 @@ label {
   }
 
   .organizer__desc {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .date__appointment {
