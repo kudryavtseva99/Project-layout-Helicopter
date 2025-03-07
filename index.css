@@ -68,6 +68,11 @@ a {
   color: #37373f;
 }
 
+.organizer__desc-add1,
+.organizer__desc-add2 {
+  display: none;
+}
+
 .container {
   max-width: 820px;
   margin-left: auto;
