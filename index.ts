@@ -233,3 +233,23 @@ showPicsBtns.forEach((btn) => {
     }
   });
 });
+
+// реальное количество отзывов
+
+function showReviews(): void {
+  const reviewsElement: HTMLSpanElement | null =
+    document.querySelector(".reviews");
+
+  if (reviewsElement) {
+    // Получаем текущее количество отзывов из атрибута data-reviews
+    const reviews = reviewsElement.getAttribute("data-reviews");
+
+    // Если атрибут найден, обновляем текст в <span> с количеством отзывов
+    if (reviews) {
+      reviewsElement.textContent = `Показать Все (${reviews})`;
+    }
+  }
+}
+
+// Вызываем функцию сразу при загрузке страницы
+window.addEventListener("load", showReviews);
