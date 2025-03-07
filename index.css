@@ -73,6 +73,10 @@ a {
   display: none;
 }
 
+.container .photoshoot__gallery-wrapper-add {
+  display: none;
+}
+
 .container {
   max-width: 820px;
   margin-left: auto;

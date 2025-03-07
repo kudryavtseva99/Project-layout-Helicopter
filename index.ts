@@ -207,3 +207,29 @@ showBtn2.forEach((btn) => {
     }
   });
 });
+
+// скрыть/показать для фотографий
+
+const showPicsBtns: NodeListOf<HTMLButtonElement> =
+  document.querySelectorAll(".gallery__btn-span");
+
+const hiddenPics: HTMLElement | null = document.querySelector(
+  ".photoshoot__gallery-wrapper-add"
+);
+
+showPicsBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const isHidden =
+      hiddenPics &&
+      hiddenPics.classList.contains("photoshoot__gallery-wrapper-add");
+
+    if (hiddenPics) {
+      hiddenPics.classList.toggle("photoshoot__gallery-wrapper-add");
+    }
+
+    const textNode = btn.firstChild;
+    if (textNode && textNode.nodeType === 3) {
+      textNode.textContent = isHidden ? "Скрыть" : "Показать все фото";
+    }
+  });
+});

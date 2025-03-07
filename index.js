@@ -120,16 +120,18 @@ const showBtn2 = document.querySelectorAll(".organizer__btn-hidden2");
 const hiddenText1 = document.querySelectorAll(".organizer__desc-add1");
 const hiddenText2 = document.querySelectorAll(".organizer__desc-add2");
 showBtn1.forEach((btn) => {
+    // первая кнопка (декстоп и мобил)
     btn.addEventListener("click", () => {
         let isHidden = false;
         hiddenText1.forEach((element) => {
             if (element.classList.contains("organizer__desc-add1")) {
                 isHidden = true;
             }
-            element.classList.toggle("organizer__desc-add1");
+            element.classList.toggle("organizer__desc-add1"); // переключаем хиден
         });
-        const textNode = btn.firstChild;
+        const textNode = btn.firstChild; // текст кнопки, без img
         if (textNode && textNode.nodeType === 3) {
+            // проверяем текстовый узел
             textNode.textContent = isHidden ? "Скрыть" : "Читать еще";
         }
     });
@@ -146,6 +148,22 @@ showBtn2.forEach((btn) => {
         const textNode = btn.firstChild;
         if (textNode && textNode.nodeType === 3) {
             textNode.textContent = isHidden ? "Скрыть" : "Читать еще";
+        }
+    });
+});
+// скрыть/показать для фотографий
+const showPicsBtns = document.querySelectorAll(".gallery__btn-span");
+const hiddenPics = document.querySelector(".photoshoot__gallery-wrapper-add");
+showPicsBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const isHidden = hiddenPics &&
+            hiddenPics.classList.contains("photoshoot__gallery-wrapper-add");
+        if (hiddenPics) {
+            hiddenPics.classList.toggle("photoshoot__gallery-wrapper-add");
+        }
+        const textNode = btn.firstChild;
+        if (textNode && textNode.nodeType === 3) {
+            textNode.textContent = isHidden ? "Скрыть" : "Показать все фото";
         }
     });
 });
