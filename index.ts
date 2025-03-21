@@ -253,3 +253,47 @@ function showReviews(): void {
 
 // Вызываем функцию сразу при загрузке страницы
 window.addEventListener("load", showReviews);
+
+// карта
+declare const ymaps: any;
+
+// Инициализация карты
+function initMap(): void {
+  // Используем querySelector для поиска элемента по классу
+  const mapElement = document.querySelector(".yandex__map");
+
+  if (!mapElement) {
+    console.error("Элемент с классом .map не найден");
+    return;
+  }
+
+  const myMap = new ymaps.Map(mapElement, {
+    center: [55.757618, 37.617635], // Центр карты
+    zoom: 15, // Приближение
+    controls: [],
+    behaviors: ["noZoom", "noDrag", "noScrollZoom"], // Отключаем элементы управления картой
+  });
+
+  // Добавление метки
+  const myPlacemark = new ymaps.Placemark(
+    [55.757618, 37.617635],
+    {
+      // hintContent: "Встречаемся здесь", // Подсказка при наведении
+      balloonContent: "Встречаемся здесь", // Балун с текстом
+    },
+    {
+      preset: "islands#redDotIcon", // Стиль метки (красная точка)
+    }
+  );
+
+  // Добавляем метку на карту
+  myMap.geoObjects.add(myPlacemark);
+
+  // Открытие балуна по клику на метку
+  myPlacemark.events.add("click", function () {
+    myPlacemark.balloon.open(); // Открытие балуна
+  });
+}
+
+// Ожидание загрузки API Яндекс.Карт и инициализация карты
+ymaps.ready(initMap);

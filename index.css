@@ -432,24 +432,32 @@ a {
 /* map start */
 
 .map {
-  padding: 25px 0;
-  background-image: url("./img/map.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  width: 100%; /* Карта на всю ширину экрана */
+  height: 500px;
+  margin-bottom: 60px;
+}
 
-  margin-bottom: 80px;
+.yandex__map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .map__wrapper {
+  position: absolute; /* Для точного позиционирования на карте */
+  top: 23%;
+  z-index: 10; /* Элементы будут поверх карты */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Расстояние между элементами */
+
   padding: 35px 25px;
   max-width: 260px;
   border: 1px solid #c7c7c7;
   background-color: #ffffff;
-
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
 
 .map__flex-wrapper {
